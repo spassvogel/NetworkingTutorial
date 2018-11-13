@@ -15,10 +15,10 @@ public class PlayerController : NetworkBehaviour
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CmdFire();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    CmdFire();
+        //}
     }
 
     public override void OnStartLocalPlayer()

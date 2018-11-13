@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 
 public class MyNetworkDiscovery : NetworkDiscovery
 {
+    bool hasRecievedBroadcastAtLeastOnce = false;
 
     void Start()
     {
@@ -21,7 +22,13 @@ public class MyNetworkDiscovery : NetworkDiscovery
 
     public override void OnReceivedBroadcast(string fromAddress, string data)
     {
+        if(hasRecievedBroadcastAtLeastOnce)
+        {
+            return;
+        }
+        hasRecievedBroadcastAtLeastOnce = true;
         NetworkManager.singleton.networkAddress = fromAddress;
-        NetworkManager.singleton.StartClient();
+        NetworkManager.singleton.StartClient();       // Call this when a marker has been detected
+        StopBroadcast();
     }
 }
